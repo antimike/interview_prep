@@ -5,8 +5,8 @@ PROGRAMS = \
     QuickSort
 
 ARCH = x86_64
-CPPOPTIONS = -IStanfordCPPLib -arch $(ARCH) -fvisibility-inlines-hidden
-LDOPTIONS = -LStanfordCPPLib -arch $(ARCH)
+CPPOPTIONS = -IStanfordCPPLib -fvisibility-inlines-hidden
+LDOPTIONS = -LStanfordCPPLib
 LIB = -lStanfordCPPLib
 
 # ***************************************************************
