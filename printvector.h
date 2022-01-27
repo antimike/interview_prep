@@ -16,6 +16,6 @@
  * the end-of-line character.  The elements are enclosed in square brackets
  * and separated by commas.
  */
-void printVector(Vector<int> &vec);
+void printVector(Vector<int> & vec);
 
 #endif
