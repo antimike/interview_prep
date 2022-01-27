@@ -1,0 +1,35 @@
+#!/bin/zsh -f
+# Creates a directory and files for notes, implementations, etc. for the given algorithm
+
+typeset -gx -A references
+references=(
+	[^Roberts]="Eric Roberts"
+	[^AlgosMadeEasy]="Algorithms Made Easy"
+)
+
+# Create algorithm directory
+local notes_dir=$PROJECT_ROOT/algorithms/$1
+mkdir -p $notes_dir
+
+# Add notes template
+local notes=$notes_dir/notes.md
+
+if [[ ! -e $notes ]]; then
+	cat <<-NOTES >$notes
+		# ${1##*/}
+		
+		## Use cases
+		
+		## Complexity
+		
+		### Time
+		
+		### Space
+		
+		## References
+		
+		`for k in ${(k)references}; do
+			print -- "[$k]: $references[$k]";
+		done`
+	NOTES
+fi
