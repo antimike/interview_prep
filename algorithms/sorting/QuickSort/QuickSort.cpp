@@ -88,4 +88,11 @@ int partition(Vector<int> & vec, int start, int finish) {
    return lh;
 }
 
-# include "printvector.h"
+void printVector(Vector<int> & vec) {
+   cout << "[";
+   for (int i = 0; i < vec.size(); i++) {
+      if (i > 0) cout << ", ";
+      cout << vec[i];
+   }
+   cout << "]" << endl;
+}
