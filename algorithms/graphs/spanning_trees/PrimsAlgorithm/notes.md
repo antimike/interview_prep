@@ -7,15 +7,15 @@ Method of finding a MST using a priority queue (PQ).
 
 // Source[^Nutshell]
 init PQ;
-init pred[] = node[V];  // Space: O(V)
-init pri[] = node[V];   // Optimization: aux array to hold priorities
+init pred[] = node[V];      // Space: O(V)
+init pri[] = node[V];       // Optimization: aux array to hold priorities
 init queued[] = bool[V];    // Aux array to allow membership check
 for v in G:
     pri[v] = INT_MAX;
     pred[v] = -1;
 pri[v0] = 0;
 for v in G:
-    PQ.insert(v, pri[v]);
+    PQ.insert(v, pri[v]);   // Time: O(V log V)
 while PQ.size > 0:
     v = PQ.popMin();            // Next vertex in MST
     queued[v] = False;
@@ -25,7 +25,7 @@ while PQ.size > 0:
             if w < pri[u]:
                 pred[u] = v;
                 pri[u] = w;
-                PQ.decreasePriority(u, w);
+                PQ.decreasePriority(u, w);  // Time: O(log PQ.size)
 
 ## Data structures
 
@@ -45,10 +45,14 @@ while PQ.size > 0:
 
 ### Time
 
+PQ.decreasePriority is called <= 2E times;[^Nushell] each call runs in O(log PQ.size).
 * Best/average/worst:
 \[ O((V+E)\log V) \]
 
 ### Space
+
+* Best/average/worst:
+\[ O(V) \]
 
 ## References
 
