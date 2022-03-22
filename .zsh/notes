@@ -1,0 +1,19 @@
+#!/bin/zsh -f
+# Function to support quickly adding notes
+
+local templates=$PROJECT_ROOT/.templates
+local refs=$PROJECT_ROOT/references.md
+
+notes() {
+    local category=
+    for arg in ($@); do
+        if [[ $arg != */* ]]; then
+            category=$arg
+        elif [[ -z $category ]]; then
+            category=${arg%%/*}
+            arg=${arg#*/}
+        fi
+    done
+}
+
+notes $@
